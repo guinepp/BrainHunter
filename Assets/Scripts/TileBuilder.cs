@@ -12,6 +12,8 @@ public class TileBuilder : MonoBehaviour {
 	public int birthLimit;
 	[Range(1, 8)]
 	public int deathLimit;
+	[Range(1, 3)]
+	public int maxChests;
 
 	[Range(1, 10)]
 	public int numR;
@@ -20,8 +22,10 @@ public class TileBuilder : MonoBehaviour {
 	public Vector3Int tmpSize;
 	public Tilemap topMap;
 	public Tilemap botMap;
-	public Tile topTile;
-	public Tile botTile;
+	public Tile grama;
+	public Tile montanha;
+	public Tile caminho;
+	public Tile bau;
 
 	int width;
 	int height;
@@ -41,15 +45,34 @@ public class TileBuilder : MonoBehaviour {
 			terrainMap = genTilePos(terrainMap);
 		}
 
+		genChests();
+
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
+				if (terrainMap[x, y] == 0)
+					botMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), montanha);
 				if (terrainMap[x, y] == 1)
-					topMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), topTile);
-				botMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), botTile);
+					topMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), grama);
+				if (terrainMap[x, y] == 2)
+					botMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), bau);
+				if (terrainMap[x, y] == 3)
+					topMap.SetTile(new Vector3Int(-x + width / 2, -y + height / 2, 0), caminho);
 			}
 		}
 
 
+	}
+
+	public void genChests() {
+		for (int i = 0; i < maxChests;) {
+			int col = Random.Range(1, width);
+			int row = Random.Range(1, height);
+
+			if (terrainMap[col, row] != 0 && terrainMap[col, row] != 2 && terrainMap[col, row] != 3) {
+				terrainMap[col, row] = 2;
+				i++;
+			}
+		}
 	}
 
 	public void initPos() {

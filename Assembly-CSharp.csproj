@@ -57,11 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PanelControl.cs" />
+    <Compile Include="Assets\Scripts\TileBuilder.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Play.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
     <Compile Include="Assets\Scripts\Lista.cs" />
-    <Compile Include="Assets\Scripts\TileBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

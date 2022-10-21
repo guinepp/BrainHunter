@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 508275218}
   - component: {fileID: 508275217}
   - component: {fileID: 508275220}
+  - component: {fileID: 508275221}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -369,7 +370,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a98059e31f7dcea4a9efd988a2adb774, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -410,6 +411,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 508275217}
+--- !u!70 &508275221
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508275216}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.3, y: 1.92}
+  m_Direction: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +481,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 40
+  orthographic size: 22
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -540,12 +557,15 @@ MonoBehaviour:
   iniChance: 35
   birthLimit: 3
   deathLimit: 2
+  maxChests: 3
   numR: 7
-  tmpSize: {x: 120, y: 60, z: 0}
+  tmpSize: {x: 80, y: 40, z: 0}
   topMap: {fileID: 469788280}
   botMap: {fileID: 1450428367}
-  topTile: {fileID: 11400000, guid: 219d0b0ab0bf27e4c861d656b36b12db, type: 2}
-  botTile: {fileID: 11400000, guid: 1eeb1c9c462b85043a2485693f58e77f, type: 2}
+  grama: {fileID: 11400000, guid: 219d0b0ab0bf27e4c861d656b36b12db, type: 2}
+  montanha: {fileID: 11400000, guid: 1eeb1c9c462b85043a2485693f58e77f, type: 2}
+  caminho: {fileID: 11400000, guid: f3642c2f54003214c8e6a692884ea2b2, type: 2}
+  bau: {fileID: 11400000, guid: 4fb4079e8dedb8940bce0fe7803c29b1, type: 2}
 --- !u!4 &1418883074
 Transform:
   m_ObjectHideFlags: 0
@@ -572,6 +592,9 @@ GameObject:
   - component: {fileID: 1450428365}
   - component: {fileID: 1450428367}
   - component: {fileID: 1450428366}
+  - component: {fileID: 1450428370}
+  - component: {fileID: 1450428369}
+  - component: {fileID: 1450428368}
   m_Layer: 0
   m_Name: BotMap
   m_TagString: Untagged
@@ -681,3 +704,64 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!66 &1450428368
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450428364}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 1450428370}
+    m_ColliderPaths: []
+  m_CompositePaths:
+    m_Paths: []
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+--- !u!50 &1450428369
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450428364}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!19719996 &1450428370
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450428364}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 1
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
